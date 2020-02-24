@@ -82,7 +82,10 @@ namespace S2.OopLearning.BL
             {
                 return (false, "Navnet er NULL, eller indeholder kun WHITESPACE");
             }
-            
+            if(name.Any(c => Char.IsDigit(c)))
+            {
+                return (false, "Navnet må ikke indeholde tal.");
+            }
             else
             {
                 return (true, String.Empty);
@@ -98,7 +101,11 @@ namespace S2.OopLearning.BL
             if(cpr.Length != 10)
             {
                 return (false, "CPR nummeret skal være på 10 cifre.");
-            }  
+            }
+            if(cpr.Any(c => Char.IsLetter(c)))
+            {
+                return (false, "CPR nummeret må ikke indeholde bogstaver.");
+            }
             else
             {
                 return (true, String.Empty);
