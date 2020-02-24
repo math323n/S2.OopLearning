@@ -12,59 +12,60 @@ namespace S2.OopLearning.BL
         private DateTime birthday;
         private string cpr;
 
-        public Person()
+        public Person(string firstName, string lastName, string cpr)
         {
-
+            FirstName = firstName;
+            LastName = lastName;
+            Cpr = cpr;
         }
 
         public string FirstName
         {
-            get => FirstName;
+            get => firstName;
             set
             {
-                if(String.IsNullOrWhiteSpace(value))
+                (bool isValid, string errorMessage) validationResult = ValidateName(value);
+                if(!validationResult.isValid)
                 {
-                    throw new ArgumentException("Name is null, empty or whitespace", nameof(FirstName));
-                }
-                if(value.Any(c => Char.IsDigit(c)))
-                {
-                    throw new ArgumentException("Name must not contain numbers", nameof(FirstName));
+                    throw new ArgumentOutOfRangeException(nameof(FirstName), validationResult.errorMessage);
                 }
                 if(value != FirstName)
                 {
-                    FirstName = value;
+                    firstName = value;
                 }
             }
         }
         public string LastName
         {
-            get => LastName;
+            get => lastName;
             set
             {
-                if(String.IsNullOrWhiteSpace(value))
+                (bool isValid, string errorMessage) validationResult = ValidateName(value);
+                if(!validationResult.isValid)
                 {
-                    throw new ArgumentException("Name is null, empty or whitespace", nameof(LastName));
+                    throw new ArgumentOutOfRangeException(nameof(LastName), validationResult.errorMessage);
                 }
-                if(value.Any(c => Char.IsDigit(c)))
+                if(value != lastName)
                 {
-                    throw new ArgumentException("Name must not contain numbers", nameof(LastName));
-                }
-                if(value != LastName)
-                {
-                    LastName = value;
+                    lastName = value;
                 }
             }
         }
 
         public string Cpr
         {
-            get
-            {
-                return cpr;
-            }
+            get => cpr;
             set
             {
-                cpr = value;
+                (bool isValid, string errorMessage) validationResult = ValidateCpr(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(LastName), validationResult.errorMessage);
+                }
+                if(value != cpr)
+                {
+                    cpr = value;
+                }
             }
         }
 
@@ -76,10 +77,12 @@ namespace S2.OopLearning.BL
             {
                 return (false, "Navnet må ikke være under 1 cifre.");
             }
+            
             if(string.IsNullOrWhiteSpace(name))
             {
                 return (false, "Navnet er NULL, eller indeholder kun WHITESPACE");
             }
+            
             else
             {
                 return (true, String.Empty);
@@ -92,20 +95,19 @@ namespace S2.OopLearning.BL
             {
                 return (false, "CPR nummeret er NULL, eller indeholder kun WHITESPACE");
             }
-            else if(cpr.Length > 10)
+            if(cpr.Length != 10)
             {
-                return (false, "CPR nummeret må ikke være over 10 cifre.");
-            }
-            else if(cpr.Length <= 0)
-            {
-                return (false, "CPR nummeret må ikke være under 0 cifre");
-            }
+                return (false, "CPR nummeret skal være på 10 cifre.");
+            }  
             else
             {
                 return (true, String.Empty);
             }
         }
-    
+
+       
+        public override string ToString()
+                => $"Fornavn: {firstName}\tEfternavn: {lastName}\tCPR: {cpr}";
 
         public enum Gender
         {

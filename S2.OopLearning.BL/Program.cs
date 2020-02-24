@@ -6,7 +6,10 @@ namespace S2.OopLearning.BL
     {
         static void Main()
         {
-        
+            Person person = new Person("Bjarne", "Jød", "1234567890");
+
+            Console.WriteLine(person);
+            Console.ReadLine();
         }
     }
 }
