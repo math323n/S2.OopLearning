@@ -6,7 +6,7 @@ namespace S2.OopLearning.BL
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+        
         }
     }
 }
