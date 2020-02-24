@@ -9,7 +9,7 @@ namespace S2.OopLearning.BL
     {
         private string firstName;
         private string lastName;
-        private string birthday;
+        private DateTime birthday;
         private string cpr;
 
         public Person()
@@ -56,13 +56,25 @@ namespace S2.OopLearning.BL
             }
         }
 
+        public string Cpr
+        {
+            get
+            {
+                return cpr;
+            }
+            set
+            {
+                cpr = value;
+            }
+        }
+
+
+
         public static (bool, string) ValidateName(string name)
         {
-            
-
-            if(name.Length <= 0)
+            if(name.Length <= 1)
             {
-                return (false, "Navnet må ikke være under 0 cifre.");
+                return (false, "Navnet må ikke være under 1 cifre.");
             }
             if(string.IsNullOrWhiteSpace(name))
             {
@@ -74,7 +86,34 @@ namespace S2.OopLearning.BL
             }
         }
 
+        public static (bool, string) ValidateCpr(string cpr)
+        {
+            if(string.IsNullOrWhiteSpace(cpr))
+            {
+                return (false, "CPR nummeret er NULL, eller indeholder kun WHITESPACE");
+            }
+            else if(cpr.Length > 10)
+            {
+                return (false, "CPR nummeret må ikke være over 10 cifre.");
+            }
+            else if(cpr.Length <= 0)
+            {
+                return (false, "CPR nummeret må ikke være under 0 cifre");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
+    
 
+        public enum Gender
+        {
+            Male,
+            Female,
+            Autist,
+            Unspecified
+        }
 
     }
 }
