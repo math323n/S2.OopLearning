@@ -6,8 +6,8 @@ namespace S2.OopLearning.BL
     {
         static void Main()
         {
-            Person person = new Person("Bjarne", "Jød", "a234567890");
-
+            Person person = new Person("Nikolaj", "Christofferesen", "2412047890", Gender.Autist);
+            Console.WriteLine(person.Gender);
             Console.WriteLine(person);
             Console.ReadLine();
         }

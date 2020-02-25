@@ -1,19 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
+
 namespace S2.OopLearning.BL
 {
+    public enum Gender
+    {
+        Male,
+        Female,
+        Autist,
+        Skitzo
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class Person
     {
         private string firstName;
         private string lastName;
         private DateTime birthday;
         private string cpr;
+        private Gender gender;
 
-        public Person(string firstName, string lastName, string cpr)
+
+        public Person(string firstName, string lastName, string cpr, Gender gender)
         {
+            Gender = gender;
             FirstName = firstName;
             LastName = lastName;
             Cpr = cpr;
@@ -69,6 +85,41 @@ namespace S2.OopLearning.BL
             }
         }
 
+        public DateTime Birthday
+        {
+            get
+            {
+                (bool isValid, string errorMessage) validationResult = ValidateCpr(Cpr);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Birthday), validationResult.errorMessage);
+                }
+                else
+                {
+                    DateTime.TryParseExact(Cpr.Substring(0, 6), "ddMMyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date);
+
+                    birthday = date;
+
+                    return birthday;
+                }
+            }
+        }
+        public Gender Gender
+        {
+            get
+            {
+                return gender;
+            }
+            set
+            {
+                if(gender != value)
+                {
+                    gender = value;
+                }
+            }
+        }
+
+
 
 
         public static (bool, string) ValidateName(string name)
@@ -106,6 +157,14 @@ namespace S2.OopLearning.BL
             {
                 return (false, "CPR nummeret må ikke indeholde bogstaver.");
             }
+            if(!DateTime.TryParseExact(cpr.Substring(0, 6), "ddMMyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+            {
+                return (false, "De første 6 cifre er ugyldige.");
+            }
+            if(date > DateTime.Now)
+            {
+                return (false, "De første 6 cifre er en dato i fremtiden.");
+            }
             else
             {
                 return (true, String.Empty);
@@ -114,15 +173,6 @@ namespace S2.OopLearning.BL
 
        
         public override string ToString()
-                => $"Fornavn: {firstName}\tEfternavn: {lastName}\tCPR: {cpr}";
-
-        public enum Gender
-        {
-            Male,
-            Female,
-            Autist,
-            Unspecified
-        }
-
+                => $"Fornavn: {firstName}\tEfternavn: {lastName}\tCPR: {cpr}\tFødselsdato: {birthday}";
     }
 }
