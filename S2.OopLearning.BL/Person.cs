@@ -16,8 +16,14 @@ namespace S2.OopLearning.BL
     }
 
     /// <summary>
-    /// 
-    /// </summary>
+    /// reates a new <see cref="Person"/> with the provided <see cref="firstName"/>, <see cref="lastName"/>, <see cref="cpr"/>
+    ///  </summary>
+    /// <param name="firstname">The persons firstname</param>
+    /// <param name="lastname">The persons lastname</param>
+    /// <param name="cpr">The persons CPR-number</param>
+    /// <param name="gender">The persons gender</param>
+    ///<exception cref="ArgumentException"></exception>
+    /// <exception cref="ArgumentOutOfRangeException"></exception>
     public class Person
     {
         private string firstName;
@@ -26,15 +32,18 @@ namespace S2.OopLearning.BL
         private string cpr;
         private Gender gender;
 
-
         public Person(string firstName, string lastName, string cpr, Gender gender)
         {
             Gender = gender;
             FirstName = firstName;
             LastName = lastName;
             Cpr = cpr;
-        }
 
+        }
+        /// <summary>
+        /// Gets or sets value of <see cref="firstName"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string FirstName
         {
             get => firstName;
@@ -43,7 +52,7 @@ namespace S2.OopLearning.BL
                 (bool isValid, string errorMessage) validationResult = ValidateName(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(FirstName), validationResult.errorMessage);
+                    throw new ArgumentException(nameof(FirstName), validationResult.errorMessage);
                 }
                 if(value != FirstName)
                 {
@@ -51,6 +60,10 @@ namespace S2.OopLearning.BL
                 }
             }
         }
+        /// <summary>
+        /// Gets or sets the value of <see cref="lastName"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string LastName
         {
             get => lastName;
@@ -68,6 +81,11 @@ namespace S2.OopLearning.BL
             }
         }
 
+
+        /// <summary>
+        /// Gets orsets the value of<see cref= "cpr" />
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string Cpr
         {
             get => cpr;
@@ -76,7 +94,7 @@ namespace S2.OopLearning.BL
                 (bool isValid, string errorMessage) validationResult = ValidateCpr(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(LastName), validationResult.errorMessage);
+                    throw new ArgumentException(nameof(Cpr), validationResult.errorMessage);
                 }
                 if(value != cpr)
                 {
@@ -85,6 +103,10 @@ namespace S2.OopLearning.BL
             }
         }
 
+        /// <summary>
+        /// Gets the value of <see cref="birthday"/>
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
         public DateTime Birthday
         {
             get
@@ -104,6 +126,10 @@ namespace S2.OopLearning.BL
                 }
             }
         }
+
+        /// <summary>
+        /// Gets the value of <see cref="gender"/>
+        /// </summary>
         public Gender Gender
         {
             get
@@ -119,16 +145,16 @@ namespace S2.OopLearning.BL
             }
         }
 
-
-
-
+        /// <summary>
+        /// Validates the persons name
+        /// </summary>
         public static (bool, string) ValidateName(string name)
         {
             if(name.Length <= 1)
             {
                 return (false, "Navnet må ikke være under 1 cifre.");
             }
-            
+
             if(string.IsNullOrWhiteSpace(name))
             {
                 return (false, "Navnet er NULL, eller indeholder kun WHITESPACE");
@@ -143,6 +169,9 @@ namespace S2.OopLearning.BL
             }
         }
 
+        /// <summary>
+        /// Validates the persons CPR number
+        /// </summary>
         public static (bool, string) ValidateCpr(string cpr)
         {
             if(string.IsNullOrWhiteSpace(cpr))
@@ -170,9 +199,5 @@ namespace S2.OopLearning.BL
                 return (true, String.Empty);
             }
         }
-
-       
-        public override string ToString()
-                => $"Fornavn: {firstName}\tEfternavn: {lastName}\tCPR: {cpr}\tFødselsdato: {birthday}";
     }
 }
