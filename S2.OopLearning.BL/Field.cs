@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace S2.OopLearning.BL
@@ -11,10 +12,11 @@ namespace S2.OopLearning.BL
         private string crop;
         private double yield;
 
-        public Field(double width, double length)
+        public Field(double width, double length, string crop)
         {
             Width = width;
             Length = length;
+            Crop = crop;
         }
 
         public double Width
@@ -77,6 +79,11 @@ namespace S2.OopLearning.BL
             get => crop;
             set
             {
+                (bool isValid, string errorMessage) validationResult = ValidateCrop(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentException(nameof(Crop), validationResult.errorMessage);
+                }
                 if(value != crop)
                 {
                     crop = value;
@@ -98,11 +105,32 @@ namespace S2.OopLearning.BL
                 return (true, String.Empty);
             }
         }
-       
+        public static (bool, string) ValidateCrop(string crop)
+        {
+
+
+            string[] legitimateCrops = { "potato", "wheat", "oat", "carrot" };
+
+
+            if(string.IsNullOrWhiteSpace(crop))
+            {
+                return (false, "Afgrøden er NULL, eller indeholder kun WHITESPACE");
+            }
+           if(legitimateCrops.Contains(crop.ToLower()))
+            {
+                return (true, String.Empty);
+            }
+            else
+            {
+                return (false, "Afgrøden er ugyldig.");
+            }
+        }
+        
+
         /// <summary>
         /// Validates the area (width + length)
         /// </summary>
-       
+
 
 
 
