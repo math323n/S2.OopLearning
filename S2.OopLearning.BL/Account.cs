@@ -10,11 +10,24 @@ namespace S2.OopLearning.BL
         private string departmentNumber;
         private decimal balance;
 
-        public Account(string accountNumber)
+        /// <summary>
+        ///  reates a new <see cref="Person"/> with the provided <see cref="firstName"/>, <see cref="lastName"/>, <see cref="cpr"/>
+        ///  </summary>
+        /// <param name="accountNumber">The account number</param>
+        /// <param name="departmentNumber">The department number</param>
+        /// <param name="balance">The balance</param>
+        ///<exception cref="ArgumentException"></exception>
+        public Account(string accountNumber, string departmentNumber, decimal balance)
         {
-
+            AccountNumber = accountNumber;
+            DepartmentNumber = departmentNumber;
+            Balance = balance;
         }
 
+        /// <summary>
+        /// Gets or sets value of <see cref="accountNumber"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string AccountNumber
         {
             get => accountNumber;
@@ -31,7 +44,10 @@ namespace S2.OopLearning.BL
                 }
             }
         }
-
+        /// <summary>
+        /// Gets or sets value of <see cref="departmentNumber"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string DepartmentNumber
         {
             get => departmentNumber;
@@ -42,13 +58,37 @@ namespace S2.OopLearning.BL
                 {
                     throw new ArgumentException(nameof(DepartmentNumber), validationResult.errorMessage);
                 }
-                if(value != AccountNumber)
+                if(value != DepartmentNumber)
                 {
-                    accountNumber = value;
+                    departmentNumber = value;
                 }
             }
         }
 
+        /// <summary>
+        /// Gets or sets value of <see cref="balance"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
+        public decimal Balance
+        {
+            get => balance;
+            set
+            {
+                (bool isValid, string errorMessage) validationResult = ValidateBalance(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentException(nameof(Balance), validationResult.errorMessage);
+                }
+                if(value != Balance)
+                {
+                    balance = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validates the account number
+        /// </summary>
         public static (bool, string) ValidateAccountNumber(string account)
         {
             if(string.IsNullOrWhiteSpace(account))
@@ -62,18 +102,6 @@ namespace S2.OopLearning.BL
             else
             {
                 return (true, String.Empty);
-            }
-        }
-
-        public decimal Balance
-        {
-            get => balance;
-            set
-            {
-                if(value != balance)
-                {
-                    balance = value;
-                }
             }
         }
 
@@ -101,6 +129,22 @@ namespace S2.OopLearning.BL
                 return (true, String.Empty);
             }
         }
+        /// <summary>
+        /// Validates the balance
+        /// </summary>
+        public static (bool, string) ValidateBalance(decimal amount)
+        {
+           
+            if(amount < 0)
+            {
+                return (false, "Beløbet må ikke være negativt.");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
+
 
 
     }

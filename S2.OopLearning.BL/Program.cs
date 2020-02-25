@@ -20,6 +20,21 @@ namespace S2.OopLearning.BL
             {
                 Console.WriteLine(ex.Message);
             }
+            Console.WriteLine();
+            // Create account
+            try
+            {
+                Account account = new Account("YOB420696X", "Z420", 7890);
+                Console.WriteLine($"Kontonummer: {account.AccountNumber}\n" +
+                    $"Afdelingsnummer: {account.DepartmentNumber}\n" +
+                    $"Balance: {account.Balance}");
+            }
+
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+           
             Console.ReadLine();
         }
     }
