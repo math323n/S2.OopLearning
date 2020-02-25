@@ -129,6 +129,7 @@ namespace S2.OopLearning.BL
                 return (true, String.Empty);
             }
         }
+
         /// <summary>
         /// Validates the balance
         /// </summary>
