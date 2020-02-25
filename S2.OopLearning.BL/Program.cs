@@ -34,14 +34,16 @@ namespace S2.OopLearning.BL
             {
                 Console.WriteLine(ex.Message);
             }
+
             Console.WriteLine();
             // Create crop
             try
             {
-                Field field = new Field(205.5, 106.4, "Potato");
+                Field field = new Field(205, 106, "potato");
                 Console.WriteLine($"Width: {field.Width}\n" +
                     $"Længde: {field.Length}\n" +
-                    $"Afgrød: {field.Crop}");
+                    $"Afgrød: {field.Crop}\n" +
+                    $"Udbytte: {field.Yield}");
             }
 
             catch(ArgumentException ex)

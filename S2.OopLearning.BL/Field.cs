@@ -10,13 +10,17 @@ namespace S2.OopLearning.BL
         private double width;
         private double length;
         private string crop;
+        private double area;
         private double yield;
+
+        static string[] legitimateCrops = { "potato", "wheat", "oat", "carrot" };
 
         public Field(double width, double length, string crop)
         {
             Width = width;
             Length = length;
             Crop = crop;
+            //Yield = yield;
         }
 
         public double Width
@@ -69,7 +73,8 @@ namespace S2.OopLearning.BL
                 }
                 else
                 {
-                    return (length * width);
+                    area = (length * width);
+                    return area;
                 }
             }
         }
@@ -91,6 +96,44 @@ namespace S2.OopLearning.BL
             }
         }
 
+        public double Yield
+        {
+            get
+            {
+                // Wheat
+                if(crop == legitimateCrops[0])
+                {
+                    yield = (area * 20);
+                    return yield;
+                }
+                // Potato
+                 if(crop == legitimateCrops[1])
+                {
+                    yield = (area * 40);
+                    return yield;
+                }
+                // Oat
+                 if(crop == legitimateCrops[2])
+                {
+                    yield = (area * 15);
+                    return yield;
+                }
+                // Carrots
+                 if(crop == legitimateCrops[3])
+                {
+                    yield = (area * 66.66);
+                    return yield;
+                }
+                // Nothing
+                else
+                {
+                    yield = 0;
+                    return yield;
+                }
+            }
+          
+        }
+
         /// <summary>
         /// Validates a number for IS 0 or UNDER 0
         /// </summary>
@@ -108,10 +151,6 @@ namespace S2.OopLearning.BL
         public static (bool, string) ValidateCrop(string crop)
         {
 
-
-            string[] legitimateCrops = { "potato", "wheat", "oat", "carrot" };
-
-
             if(string.IsNullOrWhiteSpace(crop))
             {
                 return (false, "Afgrøden er NULL, eller indeholder kun WHITESPACE");
@@ -125,17 +164,5 @@ namespace S2.OopLearning.BL
                 return (false, "Afgrøden er ugyldig.");
             }
         }
-        
-
-        /// <summary>
-        /// Validates the area (width + length)
-        /// </summary>
-
-
-
-
-
-
-
     }
 }
