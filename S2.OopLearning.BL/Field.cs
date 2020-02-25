@@ -20,7 +20,6 @@ namespace S2.OopLearning.BL
             Width = width;
             Length = length;
             Crop = crop;
-            //Yield = yield;
         }
 
         public double Width
@@ -57,6 +56,23 @@ namespace S2.OopLearning.BL
             }
         }
 
+        public string Crop
+        {
+            get => crop;
+            set
+            {
+                (bool isValid, string errorMessage) validationResult = ValidateCrop(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentException(nameof(Crop), validationResult.errorMessage);
+                }
+                if(value != crop)
+                {
+                    crop = value;
+                }
+            }
+        }
+
         public double Area
         {
             get
@@ -77,45 +93,30 @@ namespace S2.OopLearning.BL
                     return area;
                 }
             }
+            
         }
 
-        public string Crop
-        {
-            get => crop;
-            set
-            {
-                (bool isValid, string errorMessage) validationResult = ValidateCrop(value);
-                if(!validationResult.isValid)
-                {
-                    throw new ArgumentException(nameof(Crop), validationResult.errorMessage);
-                }
-                if(value != crop)
-                {
-                    crop = value;
-                }
-            }
-        }
 
         public double Yield
         {
             get
             {
                 // Wheat
-                if(crop == legitimateCrops[0])
+                if(crop == "wheat")
                 {
-                    yield = (area * 20);
+                    yield = (area * 20.0);
                     return yield;
                 }
                 // Potato
                  if(crop == legitimateCrops[1])
                 {
-                    yield = (area * 40);
+                    yield = (area * 40.0);
                     return yield;
                 }
                 // Oat
                  if(crop == legitimateCrops[2])
                 {
-                    yield = (area * 15);
+                    yield = (area * 15.0);
                     return yield;
                 }
                 // Carrots
@@ -130,8 +131,7 @@ namespace S2.OopLearning.BL
                     yield = 0;
                     return yield;
                 }
-            }
-          
+            }     
         }
 
         /// <summary>

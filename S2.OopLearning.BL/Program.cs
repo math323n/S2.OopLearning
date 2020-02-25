@@ -39,10 +39,11 @@ namespace S2.OopLearning.BL
             // Create crop
             try
             {
-                Field field = new Field(205, 106, "potato");
+                Field field = new Field(205.5, 106.6, "wheat");
                 Console.WriteLine($"Width: {field.Width}\n" +
                     $"Længde: {field.Length}\n" +
                     $"Afgrød: {field.Crop}\n" +
+                    $"Område: {field.Area}\n" +
                     $"Udbytte: {field.Yield}");
             }
 
