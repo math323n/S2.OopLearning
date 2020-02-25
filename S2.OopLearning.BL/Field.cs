@@ -14,14 +14,26 @@ namespace S2.OopLearning.BL
         private double yield;
 
         static string[] legitimateCrops = { "potato", "wheat", "oat", "carrot" };
-
+        /// <summary>
+        /// Creates a new <see cref="Field"/> with the provided <see cref="width"/>, <see cref="length"/>, and <see cref="crop"/>
+        /// </summary>
+        /// <param name="width"></param>
+        /// <param name="length"></param>
+        /// <param name="crop"></param>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="InvalidOperationException"></exception>
         public Field(double width, double length, string crop)
         {
             Width = width;
             Length = length;
             Crop = crop;
+            Area = area;
         }
-
+        /// <summary>
+        /// Gets or sets value of <see cref="width"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public double Width
         {
             get => width;
@@ -38,7 +50,10 @@ namespace S2.OopLearning.BL
                 }
             }
         }
-
+        /// <summary>
+        /// Gets or sets value of <see cref="length"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public double Length
         {
             get => length;
@@ -56,6 +71,10 @@ namespace S2.OopLearning.BL
             }
         }
 
+        /// <summary>
+        /// Gets or sets value of <see cref="crop"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public string Crop
         {
             get => crop;
@@ -72,7 +91,10 @@ namespace S2.OopLearning.BL
                 }
             }
         }
-
+        /// <summary>
+        /// Gets or sets value of <see cref="area"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public double Area
         {
             get
@@ -93,10 +115,20 @@ namespace S2.OopLearning.BL
                     return area;
                 }
             }
-            
+            set
+            {
+                if(value != area)
+                {
+                    area = value;
+                }
+            }
+
         }
 
-
+        /// <summary>
+        /// Gets or sets value of <see cref="yield"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         public double Yield
         {
             get
@@ -131,7 +163,14 @@ namespace S2.OopLearning.BL
                     yield = 0;
                     return yield;
                 }
-            }     
+            }
+            set
+            {
+                if(value != yield)
+                {
+                    yield = value;
+                }
+            }
         }
 
         /// <summary>
@@ -148,6 +187,9 @@ namespace S2.OopLearning.BL
                 return (true, String.Empty);
             }
         }
+        /// <summary>
+        /// Validates a crop
+        /// </summary>
         public static (bool, string) ValidateCrop(string crop)
         {
 

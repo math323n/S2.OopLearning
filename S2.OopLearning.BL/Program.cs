@@ -43,8 +43,8 @@ namespace S2.OopLearning.BL
                 Console.WriteLine($"Width: {field.Width}\n" +
                     $"Længde: {field.Length}\n" +
                     $"Afgrød: {field.Crop}\n" +
-                    $"Område: {field.Area}\n" +
-                    $"Udbytte: {field.Yield}");
+                    $"Udbytte: {field.Area}\n" +
+                    $"Område: {field.Yield}");
             }
 
             catch(ArgumentException ex)
