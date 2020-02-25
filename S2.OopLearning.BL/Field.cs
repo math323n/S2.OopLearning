@@ -8,7 +8,6 @@ namespace S2.OopLearning.BL
     {
         private double width;
         private double length;
-        private double area;
         private string crop;
         private double yield;
 
@@ -23,7 +22,7 @@ namespace S2.OopLearning.BL
             get => width;
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateWidth(value);
+                (bool isValid, string errorMessage) validationResult = ValidateNumber(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentOutOfRangeException(nameof(Width), validationResult.errorMessage);
@@ -40,7 +39,7 @@ namespace S2.OopLearning.BL
             get => length;
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateLength(value);
+                (bool isValid, string errorMessage) validationResult = ValidateNumber(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentOutOfRangeException(nameof(Length), validationResult.errorMessage);
@@ -52,33 +51,58 @@ namespace S2.OopLearning.BL
             }
         }
 
-        /// <summary>
-        /// Validates the width
-        /// </summary>
-        public static (bool, string) ValidateWidth(double width)
+        public double Area
         {
-            if(width <= 0.0)
+            get
             {
-                return (false, "Bredden må ikke være 0 eller under.");
+                (bool isValid, string errorMessage) validationResult = ValidateNumber(length);
+                if(!validationResult.isValid)
+                {
+                    throw new InvalidOperationException(validationResult.errorMessage);
+                }
+                validationResult = ValidateNumber(width);
+                if(!validationResult.isValid)
+                {
+                    throw new InvalidOperationException(validationResult.errorMessage);
+                }
+                else
+                {
+                    return (length * width);
+                }
+            }
+        }
+
+        public string Crop
+        {
+            get => crop;
+            set
+            {
+                if(value != crop)
+                {
+                    crop = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validates a number for IS 0 or UNDER 0
+        /// </summary>
+        public static (bool, string) ValidateNumber(double number)
+        {
+            if(number <= 0.0)
+            {
+                return (false, "Tallet må ikke være 0 eller under.");
             }
             else
             {
                 return (true, String.Empty);
             }
         }
-
-        public static (bool, string) ValidateLength(double length)
-        {
-            if(length <= 0.0)
-            {
-                return (false, "Længden må ikke være 0 eller under.");
-            }
-            else
-            {
-                return (true, string.Empty);
-            }
-        }
-
+       
+        /// <summary>
+        /// Validates the area (width + length)
+        /// </summary>
+       
 
 
 
