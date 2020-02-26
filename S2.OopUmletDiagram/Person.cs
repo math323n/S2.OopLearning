@@ -7,15 +7,28 @@ namespace S2.OopUmletDiagram
 {
     public class Person
     {
+        private int id;
         private string firstName;
         private string lastName;
         private DateTime birthdate;
 
-        public Person(string firstName, string lastName, DateTime birthdate)
+        public Person(int id, string firstName, string lastName, DateTime birthdate)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Birthdate = birthdate;
+        }
+        public int Id
+        {
+            get => id;
+            set
+            {
+                if(value != id)
+                {
+                    id = value;
+                }
+            }
         }
 
         public string FirstName
@@ -94,7 +107,19 @@ namespace S2.OopUmletDiagram
                 return (true, String.Empty);
             }
         }
-
-        //public static string FullName => $"{firstName} {lastName}";
+        public static (bool, string) ValidateId(int id)
+        {
+            if(id <= 0)
+            {
+                return (false, "ID må ikke være 0 eller derunder.");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
+        public override string ToString()
+            =>$"ID: {id}\nFornavn: {firstName}\nEfternavn: {lastName}\nFødselsdato: {birthdate.ToString("dd/MM/yyyy")}";
+        
     }
 }

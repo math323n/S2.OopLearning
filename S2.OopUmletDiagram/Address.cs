@@ -6,6 +6,9 @@ namespace S2.OopUmletDiagram
 {
     public class Address
     {
+        private int id;
         private string streetName;
+        private string streetNumber;
+
     }
 }
