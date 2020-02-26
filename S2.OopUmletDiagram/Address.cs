@@ -9,6 +9,13 @@ namespace S2.OopUmletDiagram
         private int id;
         private string streetName;
         private string streetNumber;
+        private string zip;
+        private string city;
+        private string country;
 
+        public Address()
+        {
+
+        }
     }
 }

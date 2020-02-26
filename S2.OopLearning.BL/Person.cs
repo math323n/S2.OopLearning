@@ -38,8 +38,8 @@ namespace S2.OopLearning.BL
             FirstName = firstName;
             LastName = lastName;
             Cpr = cpr;
-
         }
+
         /// <summary>
         /// Gets or sets value of <see cref="firstName"/>
         /// </summary>
