@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace S2.OopLearning.BL
 {
@@ -30,6 +28,7 @@ namespace S2.OopLearning.BL
             Crop = crop;
             Area = area;
         }
+
         /// <summary>
         /// Gets or sets value of <see cref="width"/>
         /// </summary>
@@ -50,6 +49,7 @@ namespace S2.OopLearning.BL
                 }
             }
         }
+
         /// <summary>
         /// Gets or sets value of <see cref="length"/>
         /// </summary>
@@ -91,6 +91,7 @@ namespace S2.OopLearning.BL
                 }
             }
         }
+
         /// <summary>
         /// Gets or sets value of <see cref="area"/>
         /// </summary>
@@ -122,7 +123,6 @@ namespace S2.OopLearning.BL
                     area = value;
                 }
             }
-
         }
 
         /// <summary>
@@ -140,19 +140,19 @@ namespace S2.OopLearning.BL
                     return yield;
                 }
                 // Potato
-                 if(crop == legitimateCrops[1])
+                if(crop == legitimateCrops[1])
                 {
                     yield = (area * 40.0);
                     return yield;
                 }
                 // Oat
-                 if(crop == legitimateCrops[2])
+                if(crop == legitimateCrops[2])
                 {
                     yield = (area * 15.0);
                     return yield;
                 }
                 // Carrots
-                 if(crop == legitimateCrops[3])
+                if(crop == legitimateCrops[3])
                 {
                     yield = (area * 66.66);
                     return yield;
@@ -197,7 +197,7 @@ namespace S2.OopLearning.BL
             {
                 return (false, "Afgrøden er NULL, eller indeholder kun WHITESPACE");
             }
-           if(legitimateCrops.Contains(crop.ToLower()))
+            if(legitimateCrops.Contains(crop.ToLower()))
             {
                 return (true, String.Empty);
             }
