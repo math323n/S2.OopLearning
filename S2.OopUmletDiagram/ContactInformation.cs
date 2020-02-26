@@ -10,9 +10,11 @@ namespace S2.OopUmletDiagram
         private string email;
         private string phoneNumber;
 
-        public ContactInformation()
+        public ContactInformation(int id, string email, string phoneNumber)
         {
-
+            Id = id;
+            Email = email;
+            PhoneNumber = phoneNumber;
         }
 
         public int Id
@@ -26,6 +28,7 @@ namespace S2.OopUmletDiagram
                 }
             }
         }
+
         public string Email        {
             get => email;
             set
@@ -36,6 +39,7 @@ namespace S2.OopUmletDiagram
                 }
             }
         }
+
         public string PhoneNumber
         {
             get => phoneNumber;
@@ -47,9 +51,41 @@ namespace S2.OopUmletDiagram
                 }
             }
         }
-     
 
+        public static (bool, string) ValidateId(int id)
+        {
+            if(id <= 0)
+            {
+                return (false, "ID må ikke være 0 eller derunder.");
+            }   
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
 
+        public static (bool, string) ValidateEmail(string email)
+        {
+            if(string.IsNullOrWhiteSpace(email))
+            {
+                return (false, "Email'en er NULL, eller indeholder kun WHITESPACE");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
 
+        public static (bool, string) ValidatePhoneNumber(string phone)
+        {
+            if(string.IsNullOrWhiteSpace(phone))
+            {
+                return (false, "Telefon nummeret er NULL, eller indeholder kun WHITESPACE");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
     }
 }
