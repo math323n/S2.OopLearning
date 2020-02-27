@@ -21,6 +21,7 @@ namespace S2.OopUmletDiagram
         private string lastName;
         private DateTime birthdate;
         private ContactInformation contactInformation;
+        
 
         public Person(int id, string firstName, string lastName, DateTime birthdate, ContactInformation contactInformation)
         {
@@ -233,7 +234,7 @@ namespace S2.OopUmletDiagram
         }
         public override string ToString()
             => $"ID: {id}\nFornavn: {firstName}\nEfternavn: {lastName}\nFødselsdato: {birthdate.ToString("dd/MM/yyyy")}\n" +
-            $"Email: {ContactInformation.Email}\nTelefon: {ContactInformation.PhoneNumber}";
+            $"Email: {ContactInformation.Email}\nTelefon: {ContactInformation.PhoneNumber}\n";
 
     }
 }
