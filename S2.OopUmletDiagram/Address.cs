@@ -66,7 +66,7 @@ namespace S2.OopUmletDiagram
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentOutOfRangeException(nameof(Id), validationResult.errorMessage);
-                }               
+                }
                 if(value != id)
                 {
                     id = value;
@@ -78,7 +78,7 @@ namespace S2.OopUmletDiagram
         /// Gets or sets value of <see cref="streetName"/>
         /// </summary>
         /// <exception cref="ArgumentException"></exception>
-        public string StreetName    
+        public string StreetName
         {
             get => streetName;
             set
@@ -99,7 +99,7 @@ namespace S2.OopUmletDiagram
         /// Gets or sets value of <see cref="streetNumber"/>
         /// </summary>
         /// <exception cref="ArgumentException"></exception>
-        public int StreetNumber 
+        public int StreetNumber
         {
             get => streetNumber;
             set
@@ -125,7 +125,7 @@ namespace S2.OopUmletDiagram
             get => zip;
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateString(value);
+                (bool isValid, string errorMessage) validationResult = ValidateZip(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentException(nameof(Zip), validationResult.errorMessage);
@@ -146,7 +146,7 @@ namespace S2.OopUmletDiagram
             get => city;
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateString(value);
+                (bool isValid, string errorMessage) validationResult = ValidateCity(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentException(nameof(City), validationResult.errorMessage);
@@ -167,7 +167,7 @@ namespace S2.OopUmletDiagram
             get => country;
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateString(value);
+                (bool isValid, string errorMessage) validationResult = ValidateCountry(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentException(nameof(Country), validationResult.errorMessage);
@@ -179,16 +179,76 @@ namespace S2.OopUmletDiagram
             }
         }
 
-     /// <summary>
-     /// Validates the string
-     /// </summary>
-     /// <param name="name"></param>
-     /// <returns></returns>
+        /// <summary>
+        /// Method for gettign the amount of residents
+        /// </summary>
+        public int GetNumberOfPeople()
+        {
+            int amount = Persons.Count();
+            Console.WriteLine($"Hvor mange bor på addressen: {amount}");
+            return amount;
+        }
+
+        /// <summary>
+        /// Validates the string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static (bool, string) ValidateString(string name)
         {
             if(string.IsNullOrWhiteSpace(name))
             {
                 return (false, "Gadenavnet er NULL, eller indeholder kun WHITESPACE");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Validates the country string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateCountry(string country)
+        {
+            if(string.IsNullOrWhiteSpace(country))
+            {
+                return (false, "Country er NULL, eller indeholder kun WHITESPACE");
+            }
+            if(country.Any(c => char.IsDigit(c)))
+            {
+                return (false, "Country må ikke indeholde andet end bogstaver og mellemrum!");
+            }
+            if(!country.Any(c => char.IsLetter(c)))
+            {
+                return (false, "Country skal indeholde mindst 1 bogstav!");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Validates the city string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateCity(string city)
+        {
+            if(string.IsNullOrWhiteSpace(city))
+            {
+                return (false, "City er NULL, eller indeholder kun WHITESPACE");
+            }
+            if(city.Any(c => char.IsDigit(c)))
+            {
+                return (false, "City må ikke indeholde andet end bogstaver og mellemrum!");
+            }
+            if(!city.Any(c => char.IsLetter(c)))
+            {
+                return (false, "City skal indeholde mindst 1 bogstav!");
             }
             else
             {
@@ -214,15 +274,20 @@ namespace S2.OopUmletDiagram
         }
 
         /// <summary>
-        /// Method for gettign the amount of residents
+        ///  Validates the Zip
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public int GetNumberOfPeople()
+        public static (bool, string) ValidateZip(string zip)
         {
-            int amount = Persons.Count();
-            Console.WriteLine($"Hvor mange bor på addressen: {amount}");
-            return amount; 
-        
+            if(zip.Length <= 2)
+            {
+                return (false, "Zip må ikke være <= 2");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
         }
 
         /// <summary>
