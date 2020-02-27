@@ -21,7 +21,7 @@ namespace S2.OopUmletDiagram
         private string lastName;
         private DateTime birthdate;
         private ContactInformation contactInformation;
-        
+
 
         public Person(int id, string firstName, string lastName, DateTime birthdate, ContactInformation contactInformation)
         {
@@ -155,12 +155,15 @@ namespace S2.OopUmletDiagram
         /// Validates the persons birthdate, must not be in the future
         /// </summary>
         /// <param name="date"></param>
-        /// <returns></returns>
         public static (bool, string) ValidateBirthdate(DateTime date)
         {
             if(date > DateTime.Now)
             {
                 return (false, "Datoen er i fremtiden.");
+            }
+            if(date == new DateTime(0001, 01, 01))
+            {
+                return (false, "Datoen er ugyldig.");
             }
             else
             {
@@ -203,7 +206,7 @@ namespace S2.OopUmletDiagram
         {
             if(id <= 0)
             {
-                return (false, "ID må ikke være 0 eller derunder.");
+                return (false, "\"ID\" må ikke være 0 eller derunder.");
             }
             else
             {
@@ -220,20 +223,24 @@ namespace S2.OopUmletDiagram
         {
             if(string.IsNullOrEmpty(info.Email))
             {
-                return (false, "The property \"Email\" cannot be null, or empty");
+                return (false, "Værdien \"Email\" må ikke være NULL eller indeholde kun WHITESPACE");
             }
             if(string.IsNullOrEmpty(info.PhoneNumber))
             {
-                return (false, "The property \"PhoneNumber\" cannot be null, or empty");
+                return (false, "Værdien \"PhoneNumber\" må ikke være NULL eller indeholde kun WHITESPACE");
             }
             else
             {
                 return (true, string.Empty);
             }
         }
+        /// <summary>
+        /// Overriding ToString()
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
             => $"ID: {id}\nFornavn: {firstName}\nEfternavn: {lastName}\nFødselsdato: {birthdate.ToString("dd/MM/yyyy")}\n" +
-            $"Email: {ContactInformation.Email}\nTelefon: {ContactInformation.PhoneNumber}\n";
+            $"Email: {ContactInformation.Email}\nTelefon: {ContactInformation.PhoneNumber}";
 
     }
 }

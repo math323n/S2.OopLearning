@@ -29,18 +29,24 @@ namespace S2.OopUmletDiagram
 
                 // Print information about address #1
                 address_germany.PrintinfoAboutAddress();
-                Console.WriteLine();
-                address_germany.GetNumberOfPeople();
+                int german_address_people_count = address_germany.GetNumberOfPeople();
+                Console.WriteLine("Tysk addresse antal beboere: " + german_address_people_count);
+
+                  Console.WriteLine();
+
                 // Print information about address #2
                 address_denmark.PrintinfoAboutAddress();
+                int danish_address_people_count = address_denmark.GetNumberOfPeople();
+                Console.WriteLine("Dansk addresse antal beboere: " + danish_address_people_count);
+
                 Console.WriteLine();
-                address_denmark.GetNumberOfPeople();
 
                 // Print information about people
+                Console.WriteLine(nikolaj);
                 Console.WriteLine();
                 Console.WriteLine(mads);
+                Console.WriteLine();
                 Console.WriteLine(dyl);
-                Console.WriteLine(nikolaj);
             }
             catch(ArgumentException ex)
             {

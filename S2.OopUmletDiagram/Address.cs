@@ -184,9 +184,15 @@ namespace S2.OopUmletDiagram
         /// </summary>
         public int GetNumberOfPeople()
         {
-            int amount = Persons.Count();
-            Console.WriteLine($"Hvor mange bor på addressen: {amount}");
-            return amount;
+            return Persons.Count();
+        }
+        /// <summary>
+        /// Prints information
+        /// </summary>
+        public void PrintinfoAboutAddress()
+        {
+            Console.WriteLine($"Gadenavn: {streetName}\nHusnummer: {streetNumber}\nZip: {zip}\n" +
+                $"By: {city}\nLand: {country}");
         }
 
         /// <summary>
@@ -289,15 +295,5 @@ namespace S2.OopUmletDiagram
                 return (true, String.Empty);
             }
         }
-
-        /// <summary>
-        /// Prints information
-        /// </summary>
-        public void PrintinfoAboutAddress()
-        {
-            Console.WriteLine($"Gadenavn: {streetName}\nHusnummer: {streetNumber}\nZip: {zip}\n" +
-                $"By: {city}\nLand: {country}");
-        }
-
     }
 }

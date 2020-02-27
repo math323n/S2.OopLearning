@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace S2.OopUmletDiagram
@@ -115,6 +116,14 @@ namespace S2.OopUmletDiagram
             {
                 return (false, "Email'en er NULL, eller indeholder kun WHITESPACE");
             }
+            if(!email.Contains("@"))
+            {
+                return (false, "Email skal indeholde et '@'.");
+            }
+            if(!email.Contains("."))
+            {
+                return (false, "Mail skal indeholde et domæne; f.eks '.com'");
+            }
             else
             {
                 return (true, String.Empty);
@@ -130,7 +139,19 @@ namespace S2.OopUmletDiagram
         {
             if(string.IsNullOrWhiteSpace(phone))
             {
-                return (false, "Telefon nummeret er NULL, eller indeholder kun WHITESPACE");
+                return (false, "Telefonnummeret er NULL, eller indeholder kun WHITESPACE.");
+            }
+            if(!phone.Any(c => char.IsNumber(c)))
+            {
+                return (false, "Telefonnummeret må kun indeholde tal, (0-9).");
+            }
+            if(phone.Length < 4)
+            {
+                return (false, "Telefonnummeret må ikke være < 4.");
+            }
+            if(phone.Length > 15)
+            {
+                return (false, "Telefonnummeret må ikke være > 15.");
             }
             else
             {
