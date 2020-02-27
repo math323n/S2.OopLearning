@@ -137,7 +137,6 @@ namespace S2.OopUmletDiagram
             }
         }
 
-
         /// <summary>
         /// Calculates the age of the person
         /// </summary>
