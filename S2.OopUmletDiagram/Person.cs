@@ -20,14 +20,15 @@ namespace S2.OopUmletDiagram
         private string firstName;
         private string lastName;
         private DateTime birthdate;
+        private ContactInformation contactInformation;
 
-
-        public Person(int id, string firstName, string lastName, DateTime birthdate)
+        public Person(int id, string firstName, string lastName, DateTime birthdate, ContactInformation contactInformation)
         {
             Id = id;
             FirstName = firstName;
             LastName = lastName;
             Birthdate = birthdate;
+            ContactInformation = contactInformation;
         }
 
         /// <summary>
@@ -113,6 +114,29 @@ namespace S2.OopUmletDiagram
                 }
             }
         }
+
+        /// <summary>
+        /// Gets or sets value of <see cref="contactInformation"/>
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
+        public ContactInformation ContactInformation
+        {
+            get => contactInformation;
+            set
+            {
+                (bool isValid, string errorMessage) = ValidateContactInformation(value);
+                if(!isValid)
+                {
+                    throw new ArgumentException(errorMessage, nameof(ContactInformation));
+                }
+                if(contactInformation != value)
+                {
+                    contactInformation = value;
+                }
+            }
+        }
+
+
         /// <summary>
         /// Calculates the age of the person
         /// </summary>
@@ -186,8 +210,30 @@ namespace S2.OopUmletDiagram
                 return (true, String.Empty);
             }
         }
+
+        /// <summary>
+        /// Validates the contact information
+        /// </summary>
+        /// <param name="contactInformation"></param>
+        /// <returns></returns>
+        public static (bool, string) ValidateContactInformation(ContactInformation info)
+        {
+            if(string.IsNullOrEmpty(info.Email))
+            {
+                return (false, "The property \"Email\" cannot be null, or empty");
+            }
+            if(string.IsNullOrEmpty(info.PhoneNumber))
+            {
+                return (false, "The property \"PhoneNumber\" cannot be null, or empty");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
         public override string ToString()
-            => $"ID: {id}\nFornavn: {firstName}\nEfternavn: {lastName}\nFødselsdato: {birthdate.ToString("dd/MM/yyyy")}";
+            => $"ID: {id}\nFornavn: {firstName}\nEfternavn: {lastName}\nFødselsdato: {birthdate.ToString("dd/MM/yyyy")}\n" +
+            $"Email: {ContactInformation.Email}\nTelefon: {ContactInformation.PhoneNumber}";
 
     }
 }
