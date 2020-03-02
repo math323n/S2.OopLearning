@@ -15,13 +15,13 @@ namespace S2.CompositionTest
         [Fact]
         public void TestPerson()
         {
-           Person person = new Person(1, "N1kolaj", "Christoffersen", new DateTime(2000, 05, 05),
+           Person person = new Person(1, "Nikolaj", "Christoffersen", new DateTime(2000, 05, 05),
                 new ContactInformation(1, "niko7185@edu.campusvejle.dk", "26259801"));
 
-            Assert.Throws<ArgumentException>(
-                () => Console.WriteLine(person)
-                );
-
+            Assert.Throws<ArgumentOutOfRangeException>(
+                () => new Person(1, "Nikolaj", "Christoffersen", new DateTime(2000, 05, 05),
+                new ContactInformation(1, "niko7185@edu.campusvejle.dk", "26259801"))
+                ); 
         }
     }
 }
