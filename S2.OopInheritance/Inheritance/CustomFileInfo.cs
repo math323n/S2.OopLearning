@@ -6,18 +6,18 @@ namespace S2.OopLearning.BL.Inheritance
 {
     class CustomFileInfo
     {
-        private string fileName;
-        private int fileSize;
-        private DateTime creationTime;
+        protected string fileName;
+        protected int fileSize;
+        protected DateTime creationTime;
 
-        protected CustomFileInfo(string fileName, int fileSize, DateTime creationTime)
+        public CustomFileInfo(string fileName, int fileSize, DateTime creationTime)
         {
             FileName = fileName;
             FileSize = fileSize;
             CreationTime = creationTime;
         }
 
-        protected string FileName
+        public string FileName
         {
             get
             {
@@ -30,7 +30,7 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        protected int FileSize
+        public int FileSize
         {
             get
             {
@@ -43,7 +43,7 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        protected DateTime CreationTime
+        public DateTime CreationTime
         {
             get
             {
