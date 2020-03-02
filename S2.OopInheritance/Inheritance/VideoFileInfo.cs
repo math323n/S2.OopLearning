@@ -5,7 +5,7 @@ using System.Text;
 
 namespace S2.OopInheritance.Inheritance
 {
-    class VideoFileInfo : ImageFileInfo
+    public class VideoFileInfo: ImageFileInfo
     {
         private int duration;
 
@@ -40,7 +40,7 @@ namespace S2.OopInheritance.Inheritance
         {
             if(minutes <= 0)
             {
-                
+
                 return (false, "Filmen må ikke være på 0 minutter eller derunder.");
             }
             else

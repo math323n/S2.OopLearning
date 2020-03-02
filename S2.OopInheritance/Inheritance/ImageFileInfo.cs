@@ -5,7 +5,7 @@ using System.Text;
 
 namespace S2.OopInheritance.Inheritance
 {
-    class ImageFileInfo : CustomFileInfo
+    public class ImageFileInfo: CustomFileInfo
     {
         private int width;
         private int height;

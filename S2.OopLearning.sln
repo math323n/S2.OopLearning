@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OopComposition", "S2.Oop
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.CompositionTest", "S2.CompositionTest\S2.CompositionTest.csproj", "{547FEA08-24F9-46BC-AB2D-56BB6A960356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S2.OopInheritance", "S2.OopInheritance\S2.OopInheritance.csproj", "{90C4BFA6-9566-4C69-9FBD-E7B36EAC6D2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OopInheritance", "S2.OopInheritance\S2.OopInheritance.csproj", "{90C4BFA6-9566-4C69-9FBD-E7B36EAC6D2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
