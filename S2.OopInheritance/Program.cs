@@ -9,7 +9,7 @@ namespace S2.OopInheritance
         {
             try
             {
-                DocumentFileInfo document = new DocumentFileInfo("var", 48, new DateTime(69, 01, 01));
+                DocumentFileInfo document = new DocumentFileInfo("filnavn", 45, new DateTime(69, 01, 01));
                 Console.WriteLine(document.FileSize);
 
             }
