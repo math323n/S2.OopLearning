@@ -39,7 +39,16 @@ namespace S2.OopLearning.BL.Inheritance
 
             set
             {
-                fileSize = value;
+                (bool isValid, string errorMessage) validationResult = ValidateFileSize(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(FileSize), validationResult.errorMessage);
+                }
+                if(value != fileSize)
+                {
+                    fileSize = value;
+                }
+                
             }
         }
 
@@ -60,11 +69,11 @@ namespace S2.OopLearning.BL.Inheritance
         {
             if(fileSize > 45)
             {
-                return (false, "Filen må ikke være på mere end 45 mb!");
+                return (false, "Fil størelsen er over 45 MB. ");
             }
-            if(fileSize == 0)
+            if(fileSize <= 0)
             {
-                return (false, "Filens størrelse er ugyldig!");
+                return (false, "Fil størelsen er ugyldig.");
             }
             else
             {

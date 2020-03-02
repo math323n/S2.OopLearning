@@ -44,7 +44,7 @@ namespace S2.OopUmletDiagram
                 (bool isValid, string errorMessage) validationResult = ValidateId(value);
                 if(!validationResult.isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(Id), validationResult.errorMessage);
+                    
                 }
                 if(value != id)
                 {
