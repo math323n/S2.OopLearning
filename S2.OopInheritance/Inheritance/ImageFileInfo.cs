@@ -26,7 +26,16 @@ namespace S2.OopInheritance.Inheritance
 
             set
             {
-                width = value;
+
+                (bool isValid, string errorMessage) validationResult = ValidateImageWidth(value);
+                if(validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Width), validationResult.errorMessage);
+                }
+                if(value != width)
+                {
+                    width = value;
+                }
             }
         }
 
@@ -39,26 +48,42 @@ namespace S2.OopInheritance.Inheritance
 
             set
             {
-                height = value;
+                (bool isValid, string errorMessage) validationResult = ValidateImageHeight(value);
+                if(validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Height), validationResult.errorMessage);
+                }
+                if(value != height)
+                {
+                    height = value;
+                }
             }
         }
 
-        public (bool, string) ValidateImageWidthAndHeight(int image)
+        public (bool, string) ValidateImageWidth(int dimension)
         {
-            if(image > 45)
-            {
-                return (false, "Fil størelsen er over 45 MB. ");
-            }
-            if(fileSize <= 0)
-            {
-                return (false, "Fil størelsen er ugyldig.");
-            }
-            else
+            if(dimension > 1920)
             {
                 return (true, String.Empty);
             }
+            else
+            {
+                return (false, "Forkert dimension");
+            }
+        }
+        public (bool, string) ValidateImageHeight(int dimension)
+        {
+            if(dimension > 1080)
+            {
+                return (true, String.Empty);
+            }
+            else
+            {
+                return (false, "Forkert dimension");
+            }
         }
 
-
+        public override string ToString()
+        => $"Bredde: {width}\nLængde: {height}\nFilnavn: {fileName}\nFilstørelse: {fileSize} MB\nOprettet: {creationTime.ToString("dd/MM/yyyy")}";
     }
 }
