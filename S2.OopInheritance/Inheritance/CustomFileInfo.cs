@@ -4,7 +4,7 @@ using System.Text;
 
 namespace S2.OopLearning.BL.Inheritance
 {
-    public class CustomFileInfo
+    class CustomFileInfo
     {
         private string fileName;
         private int fileSize;
@@ -56,10 +56,22 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        public bool IsSizeTooLarge()
+        public (bool, string) ValidateFileSize(int fileSize)
         {
-            return true;
+            if(fileSize > 45)
+            {
+                return (false, "Filen må ikke være på mere end 45 mb!");
+            }
+            if(fileSize == 0)
+            {
+                return (false, "Filens størrelse er ugyldig!");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
         }
-       
+
+
     }
 }
