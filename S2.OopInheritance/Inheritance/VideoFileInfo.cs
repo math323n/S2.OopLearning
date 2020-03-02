@@ -50,6 +50,6 @@ namespace S2.OopInheritance.Inheritance
         }
 
         public override string ToString()
-        => $"Bredde: {Width}\nLængde: {Height}\nVideo: {fileName}\nMinutter: {duration}\nFilstørelse: {fileSize} MB\nOprettet: {creationTime.ToString("dd/MM/yyyy")}";
+        => $"Bredde: {width}\nLængde: {height}\nVideo: {fileName}\nMinutter: {duration}\nFilstørelse: {fileSize} MB\nOprettet: {creationTime.ToString("dd/MM/yyyy")}";
     }
 }

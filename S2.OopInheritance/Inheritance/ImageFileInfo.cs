@@ -7,8 +7,8 @@ namespace S2.OopInheritance.Inheritance
 {
     public class ImageFileInfo: CustomFileInfo
     {
-        private int width;
-        private int height;
+        protected int width;
+        protected int height;
 
         public ImageFileInfo(int width, int height, string fileName, int fileSize, DateTime creationTime)
             : base(fileName, fileSize, creationTime)
@@ -17,7 +17,7 @@ namespace S2.OopInheritance.Inheritance
             Height = height;
         }
 
-        protected int Width
+        public int Width
         {
             get
             {
@@ -39,7 +39,7 @@ namespace S2.OopInheritance.Inheritance
             }
         }
 
-        protected int Height
+        public int Height
         {
             get
             {
