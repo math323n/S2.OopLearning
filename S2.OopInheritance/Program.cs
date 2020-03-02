@@ -9,8 +9,9 @@ namespace S2.OopInheritance
         {
             try
             {
-                DocumentFileInfo document = new DocumentFileInfo("filnavn", 45, new DateTime(69, 01, 01));
-                Console.WriteLine(document.FileSize);
+                DocumentFileInfo document = new DocumentFileInfo("autistfil", 12, new DateTime(2004, 12, 02));
+                Console.WriteLine(document);
+                
 
             }
             catch(ArgumentOutOfRangeException e)

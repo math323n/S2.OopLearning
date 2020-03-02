@@ -43,7 +43,22 @@ namespace S2.OopInheritance.Inheritance
             }
         }
 
+        public (bool, string) ValidateImageWidthAndHeight(int image)
+        {
+            if(image > 45)
+            {
+                return (false, "Fil størelsen er over 45 MB. ");
+            }
+            if(fileSize <= 0)
+            {
+                return (false, "Fil størelsen er ugyldig.");
+            }
+            else
+            {
+                return (true, String.Empty);
+            }
+        }
 
-       
+
     }
 }

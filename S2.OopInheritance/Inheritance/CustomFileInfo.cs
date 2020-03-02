@@ -81,6 +81,7 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-
+        public override string ToString()
+         => $"Filnavn: {fileName}\nFilstørelse: {fileSize}\nOprettet: {creationTime.ToString("dd/MM/yyyy")}";
     }
 }
