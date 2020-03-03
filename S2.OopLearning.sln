@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.CompositionTest", "S2.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S2.OopInheritance", "S2.OopInheritance\S2.OopInheritance.csproj", "{90C4BFA6-9566-4C69-9FBD-E7B36EAC6D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeManualTest", "ShapeManualTest\ShapeManualTest.csproj", "{8A09F362-E478-4604-9835-6A412891CCAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeEntities", "ShapeEntities\ShapeEntities.csproj", "{84A47D38-9AC6-4C7A-9B4F-2B57D1E1365F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{90C4BFA6-9566-4C69-9FBD-E7B36EAC6D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C4BFA6-9566-4C69-9FBD-E7B36EAC6D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90C4BFA6-9566-4C69-9FBD-E7B36EAC6D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A09F362-E478-4604-9835-6A412891CCAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A09F362-E478-4604-9835-6A412891CCAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A09F362-E478-4604-9835-6A412891CCAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A09F362-E478-4604-9835-6A412891CCAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84A47D38-9AC6-4C7A-9B4F-2B57D1E1365F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84A47D38-9AC6-4C7A-9B4F-2B57D1E1365F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84A47D38-9AC6-4C7A-9B4F-2B57D1E1365F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84A47D38-9AC6-4C7A-9B4F-2B57D1E1365F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
