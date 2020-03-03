@@ -27,19 +27,26 @@ namespace ShapeEntities
             }
         }
 
+      
+
         public override double CalculateArea()
         {
-            return base.CalculateArea();
+            double area;
+            area = Math.PI * radius * radius;
+            return area;
         }
 
         public override double CalculateCircumference()
         {
-            throw new NotImplementedException();
+            double circumference;
+            circumference = 2 * radius * Math.PI;
+            return circumference;
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            return $"X: {x}\nY: {y}\nRadius: {radius}\n" +
+                $"Area: {CalculateArea()}\nCircumference: {CalculateCircumference()}";
         }
 
     }

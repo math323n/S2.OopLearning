@@ -22,7 +22,15 @@ namespace ShapeEntities
 
             set
             {
-                x = value;
+                (bool isValid, string errorMessage) validationResult = ValidateNumberOverZero(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(X), validationResult.errorMessage);
+                }
+                if(value != x)
+                {
+                    x = value;
+                }
             }
         }
 
@@ -35,7 +43,27 @@ namespace ShapeEntities
 
             set
             {
-                y = value;
+                (bool isValid, string errorMessage) validationResult = ValidateNumberOverZero(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Y), validationResult.errorMessage);
+                }
+                if(value != y)
+                {
+                    y = value;
+                }
+            }
+        }
+
+        public static (bool, string) ValidateNumberOverZero (int number)
+        {
+            if(number < 0)
+            {
+                return (false, "The number(s) must be greater than 0.");
+            }
+            else
+            {
+                return (true, string.Empty);
             }
         }
 
@@ -43,7 +71,6 @@ namespace ShapeEntities
 
         public abstract double CalculateCircumference();
         
-
         public override string ToString()
         {
             return $"X: {x}\nY: {y}";

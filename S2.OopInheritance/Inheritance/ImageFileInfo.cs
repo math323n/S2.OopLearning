@@ -77,6 +77,7 @@ namespace S2.OopInheritance.Inheritance
                 return (false, "Forkert dimension");
             }
         }
+
         public static (bool, string) ValidateImageHeight(int dimension)
         {
             if(dimension > 1080)
