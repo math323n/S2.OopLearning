@@ -9,7 +9,7 @@ namespace ShapeManualTest
         {
             try
             {
-                Circle circle = new Circle(-67, 6, 123);
+                Circle circle = new Circle(67, 6, 123);
                 Console.WriteLine(circle);
             }
            catch(ArgumentException e)

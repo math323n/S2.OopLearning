@@ -22,7 +22,7 @@ namespace ShapeEntities
 
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateNumberOverZero(value);
+                (bool isValid, string errorMessage) validationResult = ValidateIntegerOverZero(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentOutOfRangeException(nameof(X), validationResult.errorMessage);
@@ -43,7 +43,7 @@ namespace ShapeEntities
 
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateNumberOverZero(value);
+                (bool isValid, string errorMessage) validationResult = ValidateIntegerOverZero(value);
                 if(!validationResult.isValid)
                 {
                     throw new ArgumentOutOfRangeException(nameof(Y), validationResult.errorMessage);
@@ -55,7 +55,19 @@ namespace ShapeEntities
             }
         }
 
-        public static (bool, string) ValidateNumberOverZero (int number)
+        public static (bool, string) ValidateIntegerOverZero (int number)
+        {
+            if(number < 0)
+            {
+                return (false, "The number(s) must be greater than 0.");
+            }
+            else
+            {
+                return (true, string.Empty);
+            }
+        }
+
+        public static (bool, string) ValidateDoubleOverZero(double number)
         {
             if(number < 0)
             {
@@ -75,6 +87,5 @@ namespace ShapeEntities
         {
             return $"X: {x}\nY: {y}";
         }
-        
     }
 }

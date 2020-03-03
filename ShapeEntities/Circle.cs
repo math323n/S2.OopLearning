@@ -23,11 +23,17 @@ namespace ShapeEntities
 
             set
             {
-                radius = value;
+                (bool isValid, string errorMessage) validationResult = ValidateDoubleOverZero(value);
+                if(!validationResult.isValid)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Radius), validationResult.errorMessage);
+                }
+                if(value != radius)
+                {
+                    radius = value;
+                }
             }
         }
-
-      
 
         public override double CalculateArea()
         {
@@ -48,6 +54,5 @@ namespace ShapeEntities
             return $"X: {x}\nY: {y}\nRadius: {radius}\n" +
                 $"Area: {CalculateArea()}\nCircumference: {CalculateCircumference()}";
         }
-
     }
 }
