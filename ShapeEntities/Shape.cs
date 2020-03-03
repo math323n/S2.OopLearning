@@ -2,17 +2,18 @@
 
 namespace ShapeEntities
 {
-    public class Shape
+    abstract public class Shape
     {
-        private int x;
-        private int y;
+        protected int x;
+        protected int y;
 
-        public Shape()
+        protected Shape(int x, int y)
         {
-
+            X = x;
+            Y = y;
         }
 
-        protected int X
+        public virtual int X
         {
             get
             {
@@ -25,7 +26,7 @@ namespace ShapeEntities
             }
         }
 
-        protected int Y
+        public virtual int Y
         {
             get
             {
@@ -36,6 +37,23 @@ namespace ShapeEntities
             {
                 y = value;
             }
+        }
+
+        public virtual double CalculateArea()
+        {
+            double result = x + y;
+            return result;
+        }
+
+        public virtual double CalculateCircumference()
+        {
+            double result = x + y;
+            return result;
+        }
+
+        public override string ToString()
+        {
+             return $"X = {x}\nY = {y}";
         }
     }
 }

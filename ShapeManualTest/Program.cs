@@ -1,4 +1,5 @@
 ﻿using System;
+using ShapeEntities;
 
 namespace ShapeManualTest
 {
@@ -6,7 +7,7 @@ namespace ShapeManualTest
     {
         static void Main()
         {
-            Console.WriteLine("Hello World!");
+           
         }
     }
 }
