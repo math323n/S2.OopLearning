@@ -13,7 +13,7 @@ namespace S2.OopInheritance
 
                 ImageFileInfo image = new ImageFileInfo(1920, 984, "autist", 23, new DateTime(1982,09,12));
 
-                VideoFileInfo video = new VideoFileInfo(1920, 1080, "film om autisme", 100, 28, new DateTime(1971, 09, 12));
+                VideoFileInfo video = new VideoFileInfo(1920, 1080, "film om autisme", 100, 34, new DateTime(1971, 09, 12));
 
                 Console.WriteLine(video);
             }

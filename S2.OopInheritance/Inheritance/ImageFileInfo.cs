@@ -5,7 +5,7 @@ using System.Text;
 
 namespace S2.OopInheritance.Inheritance
 {
-    public class ImageFileInfo: CustomFileInfo
+    public class ImageFileInfo : CustomFileInfo
     {
         protected int width;
         protected int height;
@@ -59,6 +59,12 @@ namespace S2.OopInheritance.Inheritance
                 }
             }
         }
+        
+        public override bool IsSizeTooLarge()
+        {
+            return base.IsSizeTooLarge();
+        }
+  
 
         public static (bool, string) ValidateImageWidth(int dimension)
         {

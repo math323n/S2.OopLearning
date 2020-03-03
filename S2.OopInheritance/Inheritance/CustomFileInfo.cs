@@ -4,13 +4,13 @@ using System.Text;
 
 namespace S2.OopLearning.BL.Inheritance
 {
-    public class CustomFileInfo
+    public abstract class CustomFileInfo
     {
         protected string fileName;
         protected int fileSize;
         protected DateTime creationTime;
 
-        public CustomFileInfo(string fileName, int fileSize, DateTime creationTime)
+        protected CustomFileInfo(string fileName, int fileSize, DateTime creationTime)
         {
             FileName = fileName;
             FileSize = fileSize;
@@ -39,10 +39,10 @@ namespace S2.OopLearning.BL.Inheritance
 
             set
             {
-                (bool isValid, string errorMessage) validationResult = ValidateFileSize(value);
-                if(!validationResult.isValid)
+                bool isValid = IsSizeTooLarge();
+                if(isValid)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(FileSize), validationResult.errorMessage);
+                    throw new ArgumentOutOfRangeException(nameof(FileSize), $"FileSize must not exceed 45 MB.");
                 }
                 if(value != fileSize)
                 {
@@ -65,20 +65,9 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        public static (bool, string) ValidateFileSize(int fileSize)
+        public virtual bool IsSizeTooLarge()
         {
-            if(fileSize > 45)
-            {
-                return (false, "Fil størelsen er over 45 MB. ");
-            }
-            if(fileSize <= 0)
-            {
-                return (false, "Fil størelsen er ugyldig.");
-            }
-            else
-            {
-                return (true, String.Empty);
-            }
+            return fileSize > 45 ? true : false;
         }
 
         public override string ToString()
