@@ -27,7 +27,20 @@ namespace ShapeEntities
             }
         }
 
+        public override double CalculateArea()
+        {
+            return base.CalculateArea();
+        }
 
-        
+        public override double CalculateCircumference()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

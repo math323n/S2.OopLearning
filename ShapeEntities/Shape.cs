@@ -39,21 +39,15 @@ namespace ShapeEntities
             }
         }
 
-        public virtual double CalculateArea()
-        {
-            double result = x + y;
-            return result;
-        }
+        public abstract double CalculateArea();
 
-        public virtual double CalculateCircumference()
-        {
-            double result = x + y;
-            return result;
-        }
+        public abstract double CalculateCircumference();
+        
 
         public override string ToString()
         {
-             return $"X = {x}\nY = {y}";
+            return $"X: {x}\nY: {y}";
         }
+        
     }
 }
