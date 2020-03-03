@@ -17,7 +17,7 @@ namespace S2.OopInheritance.Inheritance
             Height = height;
         }
 
-        public int Width
+        public virtual int Width
         {
             get
             {
@@ -39,7 +39,7 @@ namespace S2.OopInheritance.Inheritance
             }
         }
 
-        public int Height
+        public virtual int Height
         {
             get
             {
@@ -60,7 +60,7 @@ namespace S2.OopInheritance.Inheritance
             }
         }
 
-        public (bool, string) ValidateImageWidth(int dimension)
+        public static (bool, string) ValidateImageWidth(int dimension)
         {
             if(dimension > 1920)
             {
@@ -71,7 +71,7 @@ namespace S2.OopInheritance.Inheritance
                 return (false, "Forkert dimension");
             }
         }
-        public (bool, string) ValidateImageHeight(int dimension)
+        public static (bool, string) ValidateImageHeight(int dimension)
         {
             if(dimension > 1080)
             {

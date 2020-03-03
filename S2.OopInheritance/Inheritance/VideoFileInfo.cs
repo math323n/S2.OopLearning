@@ -7,7 +7,7 @@ namespace S2.OopInheritance.Inheritance
 {
     public class VideoFileInfo: ImageFileInfo
     {
-        private int duration;
+        protected int duration;
 
         public VideoFileInfo(int width, int height, string fileName, int duration, int fileSize, DateTime creationTime)
             : base(width, height, fileName, fileSize, creationTime)
@@ -15,7 +15,7 @@ namespace S2.OopInheritance.Inheritance
             Duration = duration;
         }
 
-        public int Duration
+        public virtual int Duration
         {
             get
             {
@@ -36,7 +36,7 @@ namespace S2.OopInheritance.Inheritance
             }
         }
 
-        public (bool, string) ValidateDuration(int minutes)
+        public static (bool, string) ValidateDuration(int minutes)
         {
             if(minutes <= 0)
             {

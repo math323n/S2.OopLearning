@@ -17,7 +17,7 @@ namespace S2.OopLearning.BL.Inheritance
             CreationTime = creationTime;
         }
 
-        public string FileName
+        public virtual string FileName
         {
             get
             {
@@ -30,7 +30,7 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        public int FileSize
+        public virtual int FileSize
         {
             get
             {
@@ -52,7 +52,7 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        public DateTime CreationTime
+        public virtual DateTime CreationTime
         {
             get
             {
@@ -65,7 +65,7 @@ namespace S2.OopLearning.BL.Inheritance
             }
         }
 
-        public (bool, string) ValidateFileSize(int fileSize)
+        public static (bool, string) ValidateFileSize(int fileSize)
         {
             if(fileSize > 45)
             {
